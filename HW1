@@ -1,0 +1,31 @@
+//первое задание
+public class Main {
+    public static void main(String[] args) {
+        int sum = 0;
+        for (int i = 0; i <= 1000; i++) {
+            if (i%3==0 || i%5==0){
+                sum+=i;
+            }
+        }
+        //System.out.println(sum);
+
+
+//второе задание
+
+
+
+       int [][] x =  { {20, 34, 2}, {9, 12, 18}, {3, 4, 5} };
+       int  minElement = x[0][0];
+       for (int i = 0; i < x.length; i++) {
+           for (int j = 0; j < x[i].length; j++){
+               if (minElement < x[i][j]){
+                   minElement = minElement;
+               }
+               else{
+                   minElement = x[i][j];
+               }
+           }
+       }
+       System.out.println(minElement);
+    }
+}
