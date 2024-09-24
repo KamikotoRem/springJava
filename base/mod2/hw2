@@ -1,0 +1,56 @@
+import java.util.Random;
+
+enum VARIANTS {
+    ROCK, PAPER, SCISSORS;
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Player bot = new Player();
+        Player alex = new Player(VARIANTS.SCISSORS, "Alex");
+        System.out.println(bot.determineWinner(bot, alex));
+    }
+}
+
+class Player {
+    private String name;
+    private VARIANTS variant;
+
+    public Player() {
+        this.name = "Bot";
+        this.variant = getRandomVariant();
+    }
+
+    public Player(VARIANTS variant, String name) {
+        this.variant = variant;
+        this.name = name;
+    }
+
+    private VARIANTS getRandomVariant() {
+        VARIANTS[] variants = VARIANTS.values();
+        Random random = new Random();
+        return variants[random.nextInt(variants.length)];
+    }
+
+    public String determineWinner(Player player1, Player player2) {
+        if (player1.variant == player2.variant) {
+            return "It's a tie";
+        }
+        switch (player1.variant) {
+            case ROCK:
+                return (player2.variant == VARIANTS.SCISSORS)
+                        ? "Player " + player1.name + " wins"
+                        : "Player " + player2.name + " wins";
+            case PAPER:
+                return (player2.variant == VARIANTS.ROCK)
+                        ? "Player " + player1.name + " wins"
+                        : "Player " + player2.name + " wins";
+            case SCISSORS:
+                return (player2.variant == VARIANTS.PAPER)
+                        ? "Player " + player1.name + " wins"
+                        : "Player " + player2.name + " wins";
+            default:
+                return "Error";
+        }
+    }
+}
